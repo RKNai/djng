@@ -13,3 +13,39 @@ def mainpage(request):
 	
 	output = template.render(variables)
 	return HttpResponse(output)
+
+def characterpage(request, ):
+
+	template = get_template('characterpage.html')
+	variables = Context({
+		'titlehead': 'PNJ',
+		'pagetitle': 'Prova',
+		'contentbody': 'Ed'
+	})
+	
+	output = template.render(variables)
+	return HttpResponse(output)
+
+def housepage(request, ):
+
+	template = get_template('housepage.html')
+	variables = Context({
+		'titlehead': 'House',
+		'pagetitle': 'Prova',
+		'contentbody': 'Lannister'
+	})
+	
+	output = template.render(variables)
+	return HttpResponse(output)
+
+def placepage(request, ):
+
+	template = get_template('placepage.html')
+	variables = Context({
+		'titlehead': 'Place',
+		'pagetitle': 'Prova',
+		'contentbody': 'Winterfell'
+	})
+	
+	output = template.render(variables)
+	return HttpResponse(output)

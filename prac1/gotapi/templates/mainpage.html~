@@ -1,9 +1,11 @@
 <html>
 	<head>
 		<style>
-		body{background-color:#b0c4de;}
-		title {text-align:center;}
+		body{
+		background-color:#b0c4de;
+		}
 
+		title {text-align:center;}
 		</style>
 		<title>{{ titlehead}}</title>
 	</head>

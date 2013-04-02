@@ -8,6 +8,10 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', mainpage, name='home'),
+    url(r'^characterpage/$', characterpage),
+    url(r'^housepage/$', housepage),
+    url(r'^placepage/$', placepage),
+    # url(r'^character/(\w+)/$', characterpadge),
     # url(r'^$', 'prac1.views.home', name='home'),
     # url(r'^prac1/', include('prac1.foo.urls')),
 
