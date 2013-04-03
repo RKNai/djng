@@ -2,7 +2,9 @@
 	<head>
 		<style>
 		body{background-color:#b0c4de;}
-		title {text-align:center;}
+		h1{text-align:center;}
+		table{text-align:center;}
+		table,th,td{border:1px solid black;}
 
 		</style>
 		<title>{{ titlehead}}</title>
@@ -10,8 +12,25 @@
 	<body>
 		<h1>{{ pagetitle }}</h1>
 		<p>{{ contentbody }}</p>
-		<p>Try a <a href="characterpage">character</a> </p>
-		<p>Try a <a href="housepage">House</a> </p>
-		<p>Try a <a href="placepage">Place</a> </p>
+		<table>
+
+		<tr>
+		<th>Try something!</th>
+		</tr>
+
+		<tr>
+		<td>Try a <a href="characterpage">character</a></td>
+		</tr>
+
+		<tr>
+		<td>Try a <a href="housepage">House</a></td>
+	
+		</tr>
+		<tr>
+		<td>Try a <a href="placepage">Place</a> </td>
+
+		</tr>
+		</table>
+
 	</body>
 </html>
