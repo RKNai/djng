@@ -4,33 +4,39 @@
 		body{background-color:#b0c4de;}
 		h1{text-align:center;}
 		table{text-align:center;}
-		table,th,td{border:1px solid black;}
+		table,th,td{border:2px solid black;}
 
 		</style>
 		<title>{{ titlehead}}</title>
 	</head>
 	<body>
+		{% if user.username %}
+			<p>Benvingut {{ user.username }}!
+			Aquí podrà gestionar els seus personatges favorits!</p>
+		{% else %}
+		<p>Benvingut no ningú:
+		Obligatori fer <a href="/login/">sign in</a>
+		per gestionar personatges.</p>
+		{% endif %}
 		<h1>{{ pagetitle }}</h1>
 		<p>{{ contentbody }}</p>
-		<table>
+		
+		<p>Llista de Personatges:
+		<input type="button" value="Llista de Personatges" onClick= location.href="/characters/" />
+		</p>
+		
+		<p>Llista de Cases:
+		<input type="button" value="Llista de Cases" onClick= location.href="/houses/" />
+		</p>
 
-		<tr>
-		<th>Try something!</th>
-		</tr>
+		<p>Llista de Castells:
+		<input type="button" value="Llista de Castells" onClick= location.href="/castles/" />
+		</p>
 
-		<tr>
-		<td>Try a <a href="characterpage">character</a></td>
-		</tr>
-
-		<tr>
-		<td>Try a <a href="housepage">House</a></td>
-	
-		</tr>
-		<tr>
-		<td>Try a <a href="placepage">Place</a> </td>
-
-		</tr>
-		</table>
+		<p>Llista de Llocs:
+		<input type="button" value="Llista de Llocs" onClick= location.href="/places/" />
+		</p>
+		
 
 	</body>
 </html>

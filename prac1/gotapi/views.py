@@ -2,49 +2,132 @@
 from django.http import HttpResponse
 from django.template import Context
 from django.template.loader import get_template
+from django.contrib.auth.models import User
+from gotapi.models import *
 
 def mainpage(request):
 	template = get_template('mainpage.html')
 	variables = Context({
 		'titlehead': 'GoT Database',
 		'pagetitle': 'Welcome to the database of GoT',
-		'contentbody': 'Killing Starks since 1996 (Warning! Can content major Spoilers!)'
+		'contentbody': 'Killing Starks since 1996 (Warning! Can content major Spoilers!)',
+		'user': request.user,
 	})
 	
 	output = template.render(variables)
 	return HttpResponse(output)
 
-def characterpage(request, ):
+def characterspage(request ):
 
+	characters = Person.objects.all()
+	template = get_template('characterspage.html')
+	variables = Context({
+		'titlehead': 'Llista Personatges',
+		'pagetitle': 'Personatges',
+		'contentbody': characters,
+	})
+	
+	output = template.render(variables)
+	return HttpResponse(output)
+
+def housespage(request ):
+
+	houses = House.objects.all()
+	template = get_template('housespage.html')
+	variables = Context({
+		'titlehead': 'Llista de cases',
+		'pagetitle': 'Cases',
+		'contentbody': houses,
+	})
+	
+	output = template.render(variables)
+	return HttpResponse(output)
+
+def castlespage(request, ):
+
+	castles = Castle.objects.all()
+	template = get_template('castlespage.html')
+	variables = Context({
+		'titlehead': 'Llista de castells',
+		'pagetitle': 'Castells',
+		'contentbody': castles,
+	})
+	
+	output = template.render(variables)
+	return HttpResponse(output)
+
+def placespage(request, ):
+
+	places = Place.objects.all()
+	template = get_template('placespage.html')
+	variables = Context({
+		'titlehead': 'Llista de llocs',
+		'pagetitle': 'Llocs',
+		'contentbody': places,
+	})
+	
+	output = template.render(variables)
+	return HttpResponse(output)
+
+def singlecharacterpage(request, idaux):
+
+	character = Person.objects.get(id = idaux)
+	
+	
 	template = get_template('characterpage.html')
 	variables = Context({
-		'titlehead': 'PNJ',
-		'pagetitle': 'Prova',
-		'contentbody': 'Ed'
+		'pagetitle': character.name,
+		'contentbody1': character.house,
+		'contentbody2': character.place,
+		'contentbody3': character.dead,
 	})
 	
 	output = template.render(variables)
 	return HttpResponse(output)
 
-def housepage(request, ):
+def singleplacepage(request, idaux):
 
-	template = get_template('housepage.html')
-	variables = Context({
-		'titlehead': 'House',
-		'pagetitle': 'Prova',
-		'contentbody': 'Lannister'
-	})
+	place = Place.objects.get(id = idaux)
 	
-	output = template.render(variables)
-	return HttpResponse(output)
-
-def placepage(request, ):
-
+	
 	template = get_template('placepage.html')
 	variables = Context({
-		'titlehead': 'Place',
-		'pagetitle': 'Prova',
-		'contentbody': 'Winterfell'
+		'pagetitle': place.name,
+		'contentbody': place.description,
+		
+	})
+	
+	output = template.render(variables)
+	return HttpResponse(output)
+
+def singlehousepage(request, idaux):
+
+	house = House.objects.get(id = idaux)
+	
+	
+	template = get_template('housepage.html')
+	variables = Context({
+		'pagetitle': house.name,
+		'contentbody1': house.slogan,
+		'contentbody2': house.castle.all(),
+		'contentbody3': house.place,
+		
+	})
+	
+	output = template.render(variables)
+	return HttpResponse(output)
+
+def singlecastlepage(request, idaux):
+
+	castle = Castle.objects.get(id = idaux)
+	
+	
+	template = get_template('castlepage.html')
+	variables = Context({
+		'pagetitle': castle.name,
+		'contentbody1': castle.place,
+		'contentbody2': castle.description,
+		
 	})
 	
 	output = template.render(variables)

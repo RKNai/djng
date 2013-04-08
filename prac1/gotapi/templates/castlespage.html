@@ -1,11 +1,11 @@
 <html>
-<head>
-<title>{{ titlehead}}</title>
-</head>
-<body>
-<h1>{{ pagetitle }}</h1>
-<ol>
-		{% for i in contentbody2 %}
+	<head>
+		<title>{{ titlehead }}</title>
+	</head>
+	<body>
+		<h1>{{ pagetitle }}</h1>
+		<ol>
+		{% for i in contentbody %}
 		
 		<li>
 		{{i.name}}
@@ -15,5 +15,5 @@
 		</li>
 		{% endfor %}
 		</ol>
-</body>
-</html>
+	</body>
+<html>

@@ -1,19 +1,27 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
 class Place(models.Model):
 
 	name = models.CharField(max_length=80)
+	description = models.CharField(max_length=1000)
 	def __unicode__(self):
 		return self.name
 
 class Castle(models.Model):
 	name = models.CharField(max_length=80)
+	place = models.ForeignKey(Place)
+	description = models.CharField(max_length=1000)
+		
+	def __unicode__(self):
+		return self.name
 
 class House(models.Model):
 	name = models.CharField(max_length=80)
 	slogan = models.CharField(max_length=80)
+	castle = models.ManyToManyField(Castle)
 	place = models.ForeignKey(Place)
 	
 	def __unicode__(self):
@@ -26,5 +34,6 @@ class Person(models.Model):
 	#mother = models.ForeignKey(self, related_name='Father')
 	house = models.ForeignKey(House)
 	place = models.ForeignKey(Place)
+	dead = models.BooleanField()
 	def __unicode__(self):
 		return self.name

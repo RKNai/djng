@@ -1,0 +1,19 @@
+<html>
+	<head>
+		<title>{{ titlehead }}</title>
+	</head>
+	<body>
+		<h1>{{ pagetitle }}</h1>
+		<ol>
+		{% for i in contentbody %}
+		
+		<li>
+		{{i.name}}
+		<input type="button" value="Llista de Personatges" onClick= location.href="/characterspage/{{i.id}}/" />
+		<a href="/characterspage/{{i.id}}/">+Detalls</a> 
+
+		</li>
+		{% endfor %}
+		</ol>
+	</body>
+<html>
