@@ -5,14 +5,13 @@
 <body>
 <h1>{{ pagetitle }}</h1>
 <p>House:
-<a href="/houses/{{contentbody1.id}}/">{{ contentbody1 }}</a>
+<input type="button" value="{{contentbody1.name}}" onClick= location.href="/places/{{contentbody1.id}}/" />
 </p>
 <p>Place:
-<a href="/places/{{contentbody2.id}}/">{{ contentbody2 }}</a>
+<input type="button" value="{{contentbody2.name}}" onClick= location.href="/places/{{contentbody2.id}}/" />
 </p>
 <p>Dead?
 {{contentbody3}}
 </p>
-<p>{{ contentbody3 }}</p>
 </body>
 </html>

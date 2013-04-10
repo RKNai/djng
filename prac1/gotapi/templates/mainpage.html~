@@ -10,7 +10,10 @@
 		<title>{{ titlehead}}</title>
 	</head>
 	<body>
-		<h1>{{ pagetitle }}</h1>
+		{% if user.username %}
+			<p>Benvingut {{ user.username }}!
+			Aquí podrà gestionar els seus personatges favorits!</p>
+<h1>{{ pagetitle }}</h1>
 		<p>{{ contentbody }}</p>
 		
 		<p>Llista de Personatges:
@@ -28,6 +31,11 @@
 		<p>Llista de Llocs:
 		<input type="button" value="Llista de Llocs" onClick= location.href="/places/" />
 		</p>
+		{% else %}
+		<p>GTFO NOOB:
+		Obligatori fer <a href="/login/">sign in</a>
+		per gestionar personatges.</p>
+		{% endif %}
 		
 
 	</body>

@@ -5,7 +5,8 @@
 <body>
 <h1>{{ pagetitle }}</h1>
 <p>Place:
-<a href="/places/{{contentbody1.id}}/">{{ contentbody1 }}</a>
+<input type="button" value="{{contentbody1.name}}" onClick= location.href="/places/{{contentbody1.id}}/" />
+
 </p>
 <p>Description: 
 {{contentbody2}}
