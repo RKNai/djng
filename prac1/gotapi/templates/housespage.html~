@@ -9,7 +9,7 @@
 		
 		<li>
 		{{i.name}}
-		<input type="button" value="+Detalls" onClick= location.href="/housespage/{{i.id}}/" />
+		<input type="button" value="+Detalls" onClick= location.href="/houses/{{i.id}}/" />
 		
 
 		</li>

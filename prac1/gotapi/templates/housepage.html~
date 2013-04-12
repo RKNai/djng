@@ -4,12 +4,12 @@
 </head>
 <body>
 <h1>{{ pagetitle }}</h1>
-<ol>
+<ol>		<p>Castles:</p>
 		{% for i in contentbody2 %}
 		
 		<li>
 		{{i.name}}
-		<input type="button" value="+Detalls" onClick= location.href="/places/{{i.id}}/" />
+		<input type="button" value="+Detalls" onClick= location.href="/castles/{{i.id}}/" />
 		
 
 		</li>

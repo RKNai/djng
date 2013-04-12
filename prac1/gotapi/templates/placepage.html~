@@ -5,5 +5,6 @@
 <body>
 <h1>{{ pagetitle }}</h1>
 <p>{{ contentbody }}</p>
+<input type="button" value="Torna a l'índex de Cases" onClick= location.href="/places/" />
 </body>
 </html>
