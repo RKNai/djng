@@ -10,11 +10,22 @@
 		<li>
 		{{i.name}}
 		<input type="button" value="+Detalls" onClick= location.href="/castles/{{i.id}}/" />
-		
+		{% if user.username %}
+		<input type="button" value="Edit" onClick= location.href="/castles/{{i.id}}/edit" />
+				<input type="button" value="Delete" onClick= location.href="/castles/{{i.id}}/delete" />
+		{% endif %}
 
 		</li>
 		{% endfor %}
 		</ol>
-<input type="button" value="Torna a l'índex" onClick= location.href="//" />
+<input type="button" value="Torna a l'índex" onClick= location.href="/" />
+
+	{% if user.username %}
+		<input type="button" value="Crea un Castell" onClick= location.href="/castles/create/" />
+	{% else %}
+		<p>No estas loguejat:
+		Obligatori fer <a href="/login/">sign in</a>
+		per modificar castells.</p>
+	{% endif %}
 	</body>
 <html>

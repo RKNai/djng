@@ -1,0 +1,16 @@
+
+{%block	content%}
+{% if user.username %}
+	<form method="post" action="">
+	{% csrf_token %}
+	<table>
+	{{form.as_table }}
+	</table>
+	<input	type="submit" value="Submit"/>
+</form>
+{% else %}
+		<p>No estas loguejat:
+		Obligatori fer <a href="/login/">sign in</a>
+		per editar.</p>
+	{% endif %}
+{%endblock%}

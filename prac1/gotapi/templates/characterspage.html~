@@ -10,11 +10,21 @@
 		<li>
 		{{i.name}}
 		<input type="button" value="+Detalls" onClick= location.href="/characters/{{i.id}}/" />
-		
+		{% if user.username %}
+		<input type="button" value="Edit" onClick= location.href="/characters/{{i.id}}/edit" />
+		{% endif %}
 
 		</li>
 		{% endfor %}
 		</ol>
+<input type="button" value="Torna a l'índex" onClick= location.href="/" />
 
+	{% if user.username %}
+		<input type="button" value="Crea un Personatge" onClick= location.href="/characters/create/" />
+	{% else %}
+		<p>No estas loguejat:
+		Obligatori fer <a href="/login/">sign in</a>
+		per modificar personatges.</p>
+	{% endif %}
 	</body>
 <html>

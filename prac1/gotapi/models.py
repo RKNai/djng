@@ -11,6 +11,9 @@ class Place(models.Model):
 	description = models.CharField(max_length=1000)
 	def __unicode__(self):
 		return self.name
+	def get_absolute_url(self):
+		return reverse("PlacesPage")
+
 
 class Castle(models.Model):
 	name = models.CharField(max_length=80)
@@ -19,6 +22,8 @@ class Castle(models.Model):
 		
 	def __unicode__(self):
 		return self.name
+	def get_absolute_url(self):
+		return reverse("CastlesPage")
 
 class House(models.Model):
 	name = models.CharField(max_length=80)
@@ -28,6 +33,8 @@ class House(models.Model):
 	
 	def __unicode__(self):
 		return self.name
+	def get_absolute_url(self):
+		return reverse("HousesPage")
 
 class Person(models.Model):
 
@@ -39,6 +46,8 @@ class Person(models.Model):
 	dead = models.BooleanField()
 	def __unicode__(self):
 		return self.name
+	def get_absolute_url(self):
+		return reverse("PersonsPage")
 
 class Review(models.Model):
 	RATING_CHOICES = ((1,'one'),(2,'two'),(3,'three'),(4,'four'),(5,'five'))

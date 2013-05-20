@@ -4,6 +4,10 @@ from django.template import Context
 from django.template.loader import get_template
 from django.contrib.auth.models import User
 from gotapi.models import *
+from django.views.generic.edit import CreateView
+from django.views.generic.edit import UpdateView
+from django.views.generic.edit import DeleteView
+from gotapi.forms import *
 
 def mainpage(request):
 	template = get_template('mainpage.html')
@@ -25,6 +29,7 @@ def characterspage(request ):
 		'titlehead': 'Llista Personatges',
 		'pagetitle': 'Personatges',
 		'contentbody': characters,
+		'user': request.user,
 	})
 	
 	output = template.render(variables)
@@ -38,6 +43,7 @@ def housespage(request ):
 		'titlehead': 'Llista de cases',
 		'pagetitle': 'Cases',
 		'contentbody': houses,
+		'user': request.user,
 	})
 	
 	output = template.render(variables)
@@ -51,6 +57,7 @@ def castlespage(request, ):
 		'titlehead': 'Llista de castells',
 		'pagetitle': 'Castells',
 		'contentbody': castles,
+		'user': request.user,
 	})
 	
 	output = template.render(variables)
@@ -64,6 +71,7 @@ def placespage(request, ):
 		'titlehead': 'Llista de llocs',
 		'pagetitle': 'Llocs',
 		'contentbody': places,
+		'user': request.user,
 	})
 	
 	output = template.render(variables)
@@ -132,3 +140,45 @@ def singlecastlepage(request, idaux):
 	
 	output = template.render(variables)
 	return HttpResponse(output)
+
+class CreatePerson(CreateView):
+
+	model = Person	
+	template_name = 'forms.html'
+	form_class = PersonForm
+
+	def form_valid(self, form):
+		form.instance.user = self.request.user
+		return super(CreatePerson, self).form_valid(form)
+
+
+class CreateCastle(CreateView):
+
+	model = Castle	
+	template_name = 'forms.html'
+	form_class = CastleForm
+
+	def form_valid(self, form):
+		form.instance.user = self.request.user
+		return super(CreateCastle, self).form_valid(form)
+
+class CreatePlace(CreateView):
+
+	model = Place	
+	template_name = 'forms.html'
+	form_class = PlaceForm
+
+	def form_valid(self, form):
+		form.instance.user = self.request.user
+		return super(CreatePlace, self).form_valid(form)
+
+class CreateHouse(CreateView):
+
+	model = House	
+	template_name = 'forms.html'
+	form_class = HouseForm
+
+	def form_valid(self, form):
+		form.instance.user = self.request.user
+		return super(CreateHouse, self).form_valid(form)
+

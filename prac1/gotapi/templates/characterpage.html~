@@ -13,5 +13,7 @@
 <p>Dead?
 {{contentbody3}}
 </p>
+<input type="button" value="Torna a l'índex de Personatges" onClick= location.href="/characters/" />
+<input type="button" value="Crea un Personatge" onClick= location.href="/characters/create/" />
 </body>
 </html>

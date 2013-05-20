@@ -32,7 +32,7 @@
 		<input type="button" value="Llista de Llocs" onClick= location.href="/places/" />
 		</p>
 		{% else %}
-		<p>GTFO NOOB:
+		<p>No estas loguejat:
 		Obligatori fer <a href="/login/">sign in</a>
 		per gestionar personatges.</p>
 		{% endif %}
