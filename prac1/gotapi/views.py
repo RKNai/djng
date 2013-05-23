@@ -4,10 +4,13 @@ from django.template import Context
 from django.template.loader import get_template
 from django.contrib.auth.models import User
 from gotapi.models import *
+from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView
 from django.views.generic.edit import UpdateView
 from django.views.generic.edit import DeleteView
 from gotapi.forms import *
+from django.shortcuts import render
+from django.http import HttpResponseRedirect
 
 def mainpage(request):
 	template = get_template('mainpage.html')
@@ -87,7 +90,8 @@ def singlecharacterpage(request, idaux):
 		'pagetitle': character.name,
 		'contentbody1': character.house,
 		'contentbody2': character.place,
-		'contentbody3': character.dead,
+		'contentbody3': character.civil_status,
+		'contentbody4': character.dead,
 	})
 	
 	output = template.render(variables)
@@ -181,4 +185,17 @@ class CreateHouse(CreateView):
 	def form_valid(self, form):
 		form.instance.user = self.request.user
 		return super(CreateHouse, self).form_valid(form)
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            new_user = form.save()
+            return HttpResponseRedirect("/")
+    else:
+        form = UserCreationForm()
+    return render(request, "registration/register.html", {
+        'form': form,
+    })
+
 

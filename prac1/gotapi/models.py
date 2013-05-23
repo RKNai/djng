@@ -39,6 +39,7 @@ class House(models.Model):
 class Person(models.Model):
 
 	name = models.CharField(max_length=80) 	
+	civil_status = models.CharField(max_length=80)
 	#father = models.ForeignKey(Person, related_name='Mother')
 	#mother = models.ForeignKey(self, related_name='Father')
 	house = models.ForeignKey(House)
@@ -49,15 +50,3 @@ class Person(models.Model):
 	def get_absolute_url(self):
 		return reverse("PersonsPage")
 
-class Review(models.Model):
-	RATING_CHOICES = ((1,'one'),(2,'two'),(3,'three'),(4,'four'),(5,'five'))
-	rating = models.PositiveSmallIntegerField('Rating (stars)',blank=False, default=3, choices=RATING_CHOICES)
-	comment = models.TextField(blank=True, null=True)
-	user = models.ForeignKey(User, default=User.objects.get(id=1))
-	date = models.DateField(default=date.today)
-
-	class Meta:
-		abstract = True
-
-class PersonReview(Review):
-	person = models.ForeignKey(Person)

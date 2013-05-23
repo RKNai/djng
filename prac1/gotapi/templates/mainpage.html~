@@ -11,8 +11,17 @@
 	</head>
 	<body>
 		{% if user.username %}
-			<p>Benvingut {{ user.username }}!
+		<p>Benvingut {{ user.username }}!
 			Aquí podrà gestionar els seus personatges favorits!</p>
+		{% else %}
+		
+		<p>No estas loguejat:
+		Obligatori fer <input type="button" value="Login" onClick= location.href="/login/" />
+		per modificar personatges.</p>
+
+		<p>No estas registrat? <input type="button" value="Registra't" onClick= location.href="/register/" />
+		per modificar personatges.</p>
+		
 <h1>{{ pagetitle }}</h1>
 		<p>{{ contentbody }}</p>
 		
@@ -31,11 +40,6 @@
 		<p>Llista de Llocs:
 		<input type="button" value="Llista de Llocs" onClick= location.href="/places/" />
 		</p>
-		{% else %}
-		<p>No estas loguejat:
-		Obligatori fer <a href="/login/">sign in</a>
-		per gestionar personatges.</p>
-		{% endif %}
 		
 
 	</body>

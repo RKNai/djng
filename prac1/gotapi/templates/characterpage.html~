@@ -10,10 +10,12 @@
 <p>Place:
 <input type="button" value="{{contentbody2.name}}" onClick= location.href="/places/{{contentbody2.id}}/" />
 </p>
+<p>Civil State:
+{{contentbody3.name}}
+</p>
 <p>Dead?
-{{contentbody3}}
+{{contentbody4}}
 </p>
 <input type="button" value="Torna a l'índex de Personatges" onClick= location.href="/characters/" />
-<input type="button" value="Crea un Personatge" onClick= location.href="/characters/create/" />
 </body>
 </html>
