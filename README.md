@@ -18,6 +18,6 @@ By implementing REST, every URL, like .../characters/,  contain every single cha
 
 Last database admin user: 
 
-    Usuario: admin
-    Contraseña: 1234
+    User: admin
+    Pass: 1234
 
