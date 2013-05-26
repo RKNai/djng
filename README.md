@@ -28,6 +28,6 @@ We added too another autocomplete field in the real place from users. This time 
 
 Last database admin user: 
 
-    Usuario: admin
-    Contraseña: 1234
+    User: admin
+    Pass: 1234
 
