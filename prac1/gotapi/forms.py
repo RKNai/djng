@@ -16,3 +16,7 @@ class CastleForm(ModelForm):
 class HouseForm(ModelForm):
 	class Meta:
 		model = House
+
+class RealplaceForm(ModelForm):
+	class Meta:
+		model = Realplace

@@ -5,6 +5,15 @@ from datetime import date
 
 # Create your models here.
 
+class Realplace(models.Model):
+
+	userplace = models.CharField(max_length=80)
+	user = models.ForeignKey(User)
+	def __unicode__(self):
+		return self.name
+	def get_absolute_url(self):
+		return reverse("Realplacespage")
+
 class Place(models.Model):
 
 	name = models.CharField(max_length=80)
@@ -28,8 +37,8 @@ class Castle(models.Model):
 class House(models.Model):
 	name = models.CharField(max_length=80)
 	slogan = models.CharField(max_length=80)
-	castle = models.ManyToManyField(Castle, null=True)
-	place = models.ForeignKey(Place, null=True)
+	castle = models.ManyToManyField(Castle)
+	place = models.ForeignKey(Place)
 	
 	def __unicode__(self):
 		return self.name

@@ -66,6 +66,20 @@ def castlespage(request, ):
 	output = template.render(variables)
 	return HttpResponse(output)
 
+def realplacespage(request, ):
+
+	realplaces = Realplace.objects.all()
+	template = get_template('realplacespage.html')
+	variables = Context({
+		'titlehead': 'Places from our real users!',
+		'pagetitle': 'Places from users',
+		'contentbody': realplaces,
+		'user': request.user,
+	})
+	
+	output = template.render(variables)
+	return HttpResponse(output)
+
 def placespage(request, ):
 
 	places = Place.objects.all()
@@ -115,7 +129,6 @@ def singleplacepage(request, idaux):
 def singlehousepage(request, idaux):
 
 	house = House.objects.get(id = idaux)
-	
 	
 	template = get_template('housepage.html')
 	variables = Context({
@@ -175,6 +188,16 @@ class CreatePlace(CreateView):
 	def form_valid(self, form):
 		form.instance.user = self.request.user
 		return super(CreatePlace, self).form_valid(form)
+
+class CreateRealplace(CreateView):
+
+	model = House	
+	template_name = 'forms.html'
+	form_class = RealplaceForm
+
+	def form_valid(self, form):
+		form.instance.user = self.request.user
+		return super(CreateRealplace, self).form_valid(form)
 
 class CreateHouse(CreateView):
 

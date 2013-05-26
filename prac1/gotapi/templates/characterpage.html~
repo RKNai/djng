@@ -10,7 +10,7 @@
 <p>Place:
 <input type="button" value="{{contentbody2.name}}" onClick= location.href="/places/{{contentbody2.id}}/" />
 </p>
-<p>Civil State:
+<p>Civil Status:
 {{contentbody3.name}}
 </p>
 <p>Dead?

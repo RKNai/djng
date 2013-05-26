@@ -4,9 +4,13 @@
 </head>
 <body>
 <h1>{{ pagetitle }}</h1>
+
+<h2>Slogan: {{contentbody1}} </h2>
+
+
 <ol>		<p>Castles:</p>
 		{% for i in contentbody2 %}
-		
+
 		<li>
 		{{i.name}}
 		<input type="button" value="+Detalls" onClick= location.href="/castles/{{i.id}}/" />
@@ -14,6 +18,11 @@
 
 		</li>
 		{% endfor %}
-		</ol>
+		
+		<p>Place: {{contentbody3}} <p>
+		<input type="button" value="+Detalls" onClick= location.href="/places/{{contentbody3.id}}/" />	
+
+</ol>
+<input type="button" value="Torna a l'índex de Cases" onClick= location.href="/houses/" />
 </body>
 </html>

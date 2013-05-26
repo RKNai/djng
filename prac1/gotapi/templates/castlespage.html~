@@ -12,7 +12,7 @@
 		<input type="button" value="+Detalls" onClick= location.href="/castles/{{i.id}}/" />
 		{% if user.username %}
 		<input type="button" value="Edit" onClick= location.href="/castles/{{i.id}}/edit" />
-				<input type="button" value="Delete" onClick= location.href="/castles/{{i.id}}/delete" />
+		<input type="button" value="Delete" onClick= location.href="/castles/{{i.id}}/delete" />
 		{% endif %}
 
 		</li>

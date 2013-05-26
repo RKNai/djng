@@ -10,6 +10,7 @@ from django.views.generic.edit import UpdateView
 from django.views.generic.edit import DeleteView
 from gotapi.forms import *
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
 
 def mainpage(request):
 	template = get_template('mainpage.html')
@@ -59,6 +60,20 @@ def castlespage(request, ):
 		'titlehead': 'Llista de castells',
 		'pagetitle': 'Castells',
 		'contentbody': castles,
+		'user': request.user,
+	})
+	
+	output = template.render(variables)
+	return HttpResponse(output)
+
+def realplacespage(request, ):
+
+	realplaces = Realplace.objects.all()
+	template = get_template('realplacespage.html')
+	variables = Context({
+		'titlehead': 'Places from our real users!',
+		'pagetitle': 'Places from users',
+		'contentbody': realplaces,
 		'user': request.user,
 	})
 	
@@ -174,6 +189,16 @@ class CreatePlace(CreateView):
 	def form_valid(self, form):
 		form.instance.user = self.request.user
 		return super(CreatePlace, self).form_valid(form)
+
+class CreateRealplace(CreateView):
+
+	model = House	
+	template_name = 'forms.html'
+	form_class = RealplaceForm
+
+	def form_valid(self, form):
+		form.instance.user = self.request.user
+		return super(CreateRealplace, self).form_valid(form)
 
 class CreateHouse(CreateView):
 

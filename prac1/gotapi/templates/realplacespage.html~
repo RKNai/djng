@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<title>{{ titlehead }}</title>
+	</head>
+	<body>
+		<h1>{{ pagetitle }}</h1>
+		<ol>
+		{% for i in contentbody %}
+		
+		<li>
+		{{i.userplace}}
+		</li>
+		{% endfor %}
+		</ol>
+<input type="button" value="Torna a l'índex" onClick= location.href="/" />
+
+	{% if user.username %}
+		<input type="button" value="Digue'ns d'on ets!" onClick= location.href="/realplaces/create/" />
+	{% else %}
+		<p>No estas loguejat:
+		Obligatori fer <a href="/login/">sign in</a>
+		per afegir la teva ciutat.</p>
+	{% endif %}
+	</body>
+<html>
