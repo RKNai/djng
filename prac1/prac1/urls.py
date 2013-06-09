@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
 from gotapi.views import *
+from gotapi.forms import *
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -13,7 +14,7 @@ urlpatterns = patterns('',
     url(r'^houses/$', housespage, name = 'HousesPage'),
     url(r'^places/$', placespage, name = 'PlacesPage'),
     url(r'^castles/$', castlespage, name = 'CastlesPage'),
-    url(r'^characters/(?P<idaux>\d+)/$', singlecharacterpage),
+    url(r'^characters/(?P<idaux>\d+)/$', singlecharacterpage, name='characterpage'),
     url(r'^houses/(?P<idaux>\d+)/$', singlehousepage),
     url(r'^castles/(?P<idaux>\d+)/$', singlecastlepage),
     url(r'^places/(?P<idaux>\d+)/$', singleplacepage),
@@ -32,6 +33,7 @@ urlpatterns = patterns('',
     url(r'^characters/(?P<pk>\d+)/delete/$', DeleteView.as_view( model = Person, template_name = 'delete.html', success_url = '/characters/')),
     url(r'^register/$',register),
     url(r'^places/(?P<pk>\d+)/delete/$', DeleteView.as_view( model = Place, template_name = 'delete.html', success_url = '/places/')),
+    url(r'^characters/(?P<pk>\d+)/reviews/create/$', review, name='review_create'),
     # url(r'^$', 'prac1.views.home', name='home'),
     # url(r'^prac1/', include('prac1.foo.urls')),
 
@@ -41,4 +43,3 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
 )
-
