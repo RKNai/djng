@@ -1,6 +1,7 @@
 # Create your views here.
 from django.http import HttpResponse
-from django.template import Context
+from django.template import Context, loader
+from django.shortcuts import render_to_response, render
 from django.template.loader import get_template
 from django.contrib.auth.models import User
 from gotapi.models import *
@@ -10,7 +11,9 @@ from django.views.generic.edit import UpdateView
 from django.views.generic.edit import DeleteView
 from gotapi.forms import *
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
+from django.core import urlresolvers
 
 def mainpage(request):
 	template = get_template('mainpage.html')
@@ -101,11 +104,14 @@ def singlecharacterpage(request, idaux):
 	
 	template = get_template('characterpage.html')
 	variables = Context({
+		'character': character,
 		'pagetitle': character.name,
 		'contentbody1': character.house,
 		'contentbody2': character.place,
 		'contentbody3': character.civil_status,
 		'contentbody4': character.dead,
+		'RATING_CHOICES': CharacterReview.RATING_CHOICES,
+		'user': request.user,
 	})
 	
 	output = template.render(variables)
@@ -221,4 +227,9 @@ def register(request):
         'form': form,
     })
 
+def review(request, pk):
+	person = get_object_or_404(Person,pk=pk)
+	review = CharacterReview(rating=request.POST['rating'], comment=request.POST['comment'], user=request.user, person=person)
+	review.save()
+	return HttpResponseRedirect(urlresolvers.reverse('characterpage', args=(person.id)))
 
