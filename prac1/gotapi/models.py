@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from datetime import date
+import datetime
 
 # Create your models here.
 
@@ -59,4 +60,27 @@ class Person(models.Model):
 		return self.name
 	def get_absolute_url(self):
 		return reverse("PersonsPage")
+	def averageRating(self):
+    		rating = 0
+    		num = 0
+    		for rat in self.characterreview_set.all():
+      			num=num+1
+      			rating = rating + rat.rating
+    		return rating/num 
 
+class Review(models.Model):
+	RATING_CHOICES = ((1,'1'), (2, '2'), (3, '3'), (4, '4'),(5, '5'))
+	rating = models.PositiveSmallIntegerField('Rating (stars)', blank=False, default=3, choices=RATING_CHOICES)
+	comment = models.TextField(blank=True, null=True)
+	user = models.ForeignKey(User, blank=False)	
+	date = models.DateField(default=datetime.date.today)
+
+	class Meta:
+		abstract = True
+
+
+class CharacterReview(Review):
+	person = models.ForeignKey(Person)
+	def __unicode__(self):
+		return str(self.person)+ " - "+str(self.user) +":"+str(self.rating)
+	
